@@ -1,2 +1,2 @@
-https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+https://api.openweathermap.org/data/2.5/weather?q=pune&appid=76f1561a36750427f59dfe127ce79fef
 76f1561a36750427f59dfe127ce79fef
