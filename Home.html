@@ -4,8 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css" >
+    <!-- <link rel="stylesheet" href="./style.css" > -->
     <title>Weather App</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.box{
+    margin: 100px auto;
+    box-shadow: 0 0 10px black;
+    background-color: rgb(147, 233, 224);
+    height: 500px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.weathericon{
+    /* border: 1px solid red; */
+    height: 30%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.info{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+    </style>
 </head>
 <body>
     
@@ -14,20 +51,31 @@
         <!-- <div class="wave-two"></div>
         <div class="wave-three"></div> -->
 
-        <div class="weathericon"><i class="fa-solid fa-sun fa-4x" style="color: #eccc68; " ></i></div>
+        <div class="weathericon"><i class='fa-solid fa-sun fa-4x' style='color: #eccc68; '></i></div>
 
         <div class="info">
-            <h2><i class="fa-solid fa-street-view fa-2x" style="color: #c1e024; margin-right: 5px;"></i>Pune india</h2>
-            <p id="date">WED !  OCT 23 ! 10:49</p>
-            <h1 class="temp">26.23°C</h1>
-            <h3 class="tempMinMax">Min 26.23°C ! Max 34.45°C</h3>
+            <h2><i class="fa-solid fa-street-view fa-2x" style="color: #c1e024; margin-right: 5px;"></i>{%location%}, {%country%}</h2>
+            <p id="date">WED |  OCT 23 | 10:49</p>
+            <h1 class="temp">{%tempval%}°C</h1>
+            <h3 class="tempMinMax">Min {%tempmin%}°C | Max {%tempmax%}°C</h3>
         </div>
     </div>
     <script>
         const curDate = document.getElementById("date");
         let weatherIcon = document.getElementsByClassName("weathericon");
+
         
-        const tempStatus = "Clouds";
+        const tempStatus = "{%tempstatus%}";
+        if(tempStatus == "Sunny"){
+            weatherIcon.innerHTML = "<i class='fa-solid fa-sun fa-4x' style='color: #eccc68; '></i>"
+        } else if(tempStatus == "Clouds"){
+            weatherIcon.innerHTML = "<i class='fas fa-cloud fa-4x' style='color: #eccc68; '></i>"
+        }
+         else if(tempStatus == "Rainy"){
+            weatherIcon.innerHTML = "<i class='fas fa-cloud-rain fa-4x' style='color: #eccc68; ''></i>"
+        } else {
+            weatherIcon.innerHTML = "<i class='fas fa-cloud fa-4x' style='color: #eccc68; '></i>"
+        }
 
         const getCurrentDay = () =>{
             const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
